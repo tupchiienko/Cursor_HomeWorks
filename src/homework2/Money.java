@@ -38,21 +38,21 @@ public class Money {
     }
 
     public Money divide(Money money) {
-        return this.divideToDouble(money.toDouble());
+        return this.divide(money.toDouble());
     }
 
     public Money multiply(Money money) {
-        return this.multiplyToDouble(money.toDouble());
+        return this.multiply(money.toDouble());
     }
 
-    public Money divideToDouble(double number) {
+    public Money divide(double number) {
         if (number < 0)
             throw new IllegalArgumentException("Number must be positive.");
         double money = this.toDouble();
         return doubleToMoney(money / number);
     }
 
-    public Money multiplyToDouble(double number) {
+    public Money multiply(double number) {
         if (number < 0)
             throw new IllegalArgumentException("Number must be positive.");
         double money = this.toDouble();

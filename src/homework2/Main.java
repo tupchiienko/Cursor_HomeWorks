@@ -67,9 +67,9 @@ public class Main {
         System.out.printf("%s / %s = %s\n", money1, money2, moneyOperationResult);
         moneyOperationResult = money1.multiply(money2);
         System.out.printf("%s * %s = %s\n", money1, money2, moneyOperationResult);
-        moneyOperationResult = money1.divideToDouble(doubleNumber);
+        moneyOperationResult = money1.divide(doubleNumber);
         System.out.printf("%s / %s = %s\n", money1, doubleNumber, moneyOperationResult);
-        moneyOperationResult = money1.multiplyToDouble(doubleNumber);
+        moneyOperationResult = money1.multiply(doubleNumber);
         System.out.printf("%s * %s = %s\n", money1, doubleNumber, moneyOperationResult);
         moneyComparingResult = money1.equals(money2);
         System.out.printf("%s == %s: %s\n", money1, money2, moneyComparingResult);
