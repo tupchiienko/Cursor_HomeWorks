@@ -30,6 +30,10 @@ public class Money {
             throw new IllegalArgumentException("The second object must be less than or equal to the first");
         long resultHryvnias = this.hryvnias - money.hryvnias;
         int resultKopecks = this.kopecks - money.kopecks;
+        if (resultKopecks < 0) {
+            resultKopecks = 100 + resultKopecks;
+            resultHryvnias--;
+        }
         return new Money(resultHryvnias, (byte) resultKopecks);
     }
 

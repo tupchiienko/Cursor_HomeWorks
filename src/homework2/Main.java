@@ -55,8 +55,8 @@ public class Main {
         System.out.printf("(%s) >= (%s): %s\n", fraction1, fraction3, fractionComparingResult);
 
         System.out.println("\n5. Money class for working with monetary amounts.");
-        Money money1 = new Money(2L, (byte) 60);
-        Money money2 = new Money(1L, (byte) 40);
+        Money money1 = new Money(2L, (byte) 40);
+        Money money2 = new Money(1L, (byte) 60);
         double doubleNumber = 2.5;
         Money moneyOperationResult = money1.add(money2);
         boolean moneyComparingResult;
