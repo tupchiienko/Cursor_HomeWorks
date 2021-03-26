@@ -34,25 +34,25 @@ public class Money {
     }
 
     public Money div(Money money) {
-        return this.divToDouble(Money.toDouble(money));
+        return this.divToDouble(money.toDouble());
     }
 
     public Money mul(Money money) {
-        return this.mulToDouble(Money.toDouble(money));
+        return this.mulToDouble(money.toDouble());
     }
 
     public Money divToDouble(double number) {
         if (number < 0)
             throw new IllegalArgumentException("Number must be positive.");
-        double money = Money.toDouble(this);
-        return Money.doubleToMoney(money / number);
+        double money = this.toDouble();
+        return doubleToMoney(money / number);
     }
 
     public Money mulToDouble(double number) {
         if (number < 0)
             throw new IllegalArgumentException("Number must be positive.");
-        double money = Money.toDouble(this);
-        return Money.doubleToMoney(money * number);
+        double money = this.toDouble();
+        return doubleToMoney(money * number);
     }
 
     public boolean isEqual(Money money) {
@@ -60,18 +60,18 @@ public class Money {
     }
 
     public boolean isHigher(Money money) {
-        return Money.toDouble(this) > Money.toDouble(money);
+        return this.toDouble() > this.toDouble();
     }
 
     public boolean isHigherOrEqual(Money money) {
-        return Money.toDouble(this) >= Money.toDouble(money);
+        return this.toDouble() >= this.toDouble();
     }
 
-    private static double toDouble(Money money) {
-        return (money.hryvnias * 100 + money.kopecks) / 100d;
+    private double toDouble() {
+        return (this.hryvnias * 100 + this.kopecks) / 100d;
     }
 
-    private static Money doubleToMoney(double num) {
+    private Money doubleToMoney(double num) {
         long hryvnias = (long) num;
         byte kopecks = (byte) ((num - hryvnias) * 100);
         return new Money(hryvnias, kopecks);
