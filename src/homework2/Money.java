@@ -25,7 +25,7 @@ public class Money {
         return new Money(resultHryvnias, (byte) resultKopecks);
     }
 
-    public Money sub(Money money) {
+    public Money subtract(Money money) {
         if (!isHigherOrEqual(money))
             throw new IllegalArgumentException("The second object must be less than or equal to the first");
         long resultHryvnias = this.hryvnias - money.hryvnias;
@@ -37,38 +37,34 @@ public class Money {
         return new Money(resultHryvnias, (byte) resultKopecks);
     }
 
-    public Money div(Money money) {
-        return this.divToDouble(money.toDouble());
+    public Money divide(Money money) {
+        return this.divideToDouble(money.toDouble());
     }
 
-    public Money mul(Money money) {
-        return this.mulToDouble(money.toDouble());
+    public Money multiply(Money money) {
+        return this.multiplyToDouble(money.toDouble());
     }
 
-    public Money divToDouble(double number) {
+    public Money divideToDouble(double number) {
         if (number < 0)
             throw new IllegalArgumentException("Number must be positive.");
         double money = this.toDouble();
         return doubleToMoney(money / number);
     }
 
-    public Money mulToDouble(double number) {
+    public Money multiplyToDouble(double number) {
         if (number < 0)
             throw new IllegalArgumentException("Number must be positive.");
         double money = this.toDouble();
         return doubleToMoney(money * number);
     }
 
-    public boolean isEqual(Money money) {
-        return (this.hryvnias == money.hryvnias && this.kopecks == money.kopecks);
-    }
-
     public boolean isHigher(Money money) {
-        return this.toDouble() > this.toDouble();
+        return this.toDouble() > money.toDouble();
     }
 
     public boolean isHigherOrEqual(Money money) {
-        return this.toDouble() >= this.toDouble();
+        return this.toDouble() >= money.toDouble();
     }
 
     private double toDouble() {
@@ -79,6 +75,15 @@ public class Money {
         long hryvnias = (long) num;
         byte kopecks = (byte) ((num - hryvnias) * 100);
         return new Money(hryvnias, kopecks);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Money) {
+            Money secondMoney = (Money) obj;
+            return this.hryvnias == secondMoney.hryvnias && this.kopecks == secondMoney.kopecks;
+        }
+        return false;
     }
 
     @Override
