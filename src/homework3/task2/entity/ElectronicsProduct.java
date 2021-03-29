@@ -18,4 +18,11 @@ public abstract class ElectronicsProduct extends Product {
     public final int getGuaranteePeriod() {
         return guaranteePeriod;
     }
+
+    @Override
+    public String toString() {
+        return super.toString() +
+                ", guaranteePeriod=" + guaranteePeriod +
+                '}';
+    }
 }

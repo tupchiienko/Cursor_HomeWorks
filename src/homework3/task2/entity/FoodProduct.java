@@ -35,12 +35,8 @@ public class FoodProduct extends Product implements Expirable {
 
     @Override
     public String toString() {
-        return "FoodProduct{" +
-                "name='" + getName() + '\'' +
-                ", price=" + getPrice() +
-                ", quantity=" + getQuantity() +
-                ", ageRestriction=" + getAgeRestriction() +
-                ", expirationDate=" + getExpirationDate().format(DateTimeFormatter.ofPattern("dd MMM yyyy", Locale.ENGLISH)) +
+        return super.toString() + ", expirationDate=" +
+                getExpirationDate().format(DateTimeFormatter.ofPattern("dd MMM yyyy", Locale.ENGLISH)) +
                 '}';
     }
 

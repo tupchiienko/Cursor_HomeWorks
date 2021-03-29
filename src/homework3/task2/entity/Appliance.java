@@ -14,15 +14,4 @@ public class Appliance extends ElectronicsProduct {
         }
         return super.getPrice();
     }
-
-    @Override
-    public String toString() {
-        return "Appliance{" +
-                "name='" + getName() + '\'' +
-                ", price=" + getPrice() +
-                ", quantity=" + getQuantity() +
-                ", ageRestriction=" + getAgeRestriction() +
-                ", guaranteePeriod=" + getGuaranteePeriod() +
-                '}';
-    }
 }

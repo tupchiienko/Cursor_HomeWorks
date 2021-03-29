@@ -14,15 +14,4 @@ public class Computer extends ElectronicsProduct {
         }
         return super.getPrice();
     }
-
-    @Override
-    public String toString() {
-        return "Computer{" +
-                "name='" + getName() + '\'' +
-                ", price=" + getPrice() +
-                ", quantity=" + getQuantity() +
-                ", ageRestriction=" + getAgeRestriction() +
-                ", guaranteePeriod=" + getGuaranteePeriod() +
-                '}';
-    }
 }

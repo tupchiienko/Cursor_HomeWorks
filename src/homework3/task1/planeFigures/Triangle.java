@@ -7,25 +7,24 @@ import java.util.Arrays;
 
 public class Triangle extends PlaneShape {
 
+    private final double ab, bc, ac;
+
     public Triangle(Vertex2D a, Vertex2D b, Vertex2D c) {
         this.vertices = new Vertex2D[]{a, b, c};
+        this.ab = getABSide();
+        this.bc = getBCSide();
+        this.ac = getACSide();
     }
 
     @Override
     public double getArea() {
         double s = this.getPerimeter() / 2;
-        double a = this.getABSide();
-        double b = this.getBCSide();
-        double c = this.getACSide();
-        return Math.sqrt(s * (s - a) * (s - b) * (s - c));
+        return Math.sqrt(s * (s - ab) * (s - bc) * (s - ac));
     }
 
     @Override
     public double getPerimeter() {
-        double a = this.getABSide();
-        double b = this.getBCSide();
-        double c = this.getACSide();
-        return a + b + c;
+        return ab + bc + ac;
     }
 
     private double getABSide() {
@@ -43,6 +42,7 @@ public class Triangle extends PlaneShape {
     public String toString() {
         return "Triangle{" +
                 "vertices=" + Arrays.toString(vertices) +
+                ", ab=" + ab + ", bc=" + bc + ", ac=" + ac +
                 ", perimeter=" + this.getPerimeter() +
                 ", area=" + this.getArea() +
                 "}";
