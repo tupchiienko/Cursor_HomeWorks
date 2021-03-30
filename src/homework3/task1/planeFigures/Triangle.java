@@ -7,13 +7,13 @@ import java.util.Arrays;
 
 public class Triangle extends PlaneShape {
 
-    private final double ab, bc, ac;
+    private double ab;
+    private double bc;
+    private double ac;
 
     public Triangle(Vertex2D a, Vertex2D b, Vertex2D c) {
         this.vertices = new Vertex2D[]{a, b, c};
-        this.ab = getABSide();
-        this.bc = getBCSide();
-        this.ac = getACSide();
+        calculateDistances();
     }
 
     @Override
@@ -27,16 +27,10 @@ public class Triangle extends PlaneShape {
         return ab + bc + ac;
     }
 
-    private double getABSide() {
-        return vertices[0].getDistance(vertices[1]);
-    }
-
-    private double getBCSide() {
-        return vertices[1].getDistance(vertices[2]);
-    }
-
-    private double getACSide() {
-        return vertices[2].getDistance(vertices[0]);
+    private void calculateDistances() {
+        ab = vertices[0].getDistance(vertices[1]);
+        bc = vertices[1].getDistance(vertices[2]);
+        ac = vertices[2].getDistance(vertices[0]);
     }
 
     public String toString() {
