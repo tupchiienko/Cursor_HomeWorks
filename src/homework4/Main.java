@@ -8,11 +8,11 @@ public class Main {
         numberList.add(-5);
         numberList.add(0);
         System.out.println(numberList.getList());
-        System.out.println("Smallest number: " + numberList.lowest());
-        System.out.println("Largest number: " + numberList.highest());
+        System.out.println("Lowest number: " + numberList.lowest());
+        System.out.println("Highest number: " + numberList.highest());
         MyList<String> stringList = new MyList<>(new String[]{"wall", "1", "string", "55"});
         System.out.println(stringList.getList());
-        System.out.println("Smallest string: " + stringList.lowest());
-        System.out.println("Largest string: " + stringList.highest());
+        System.out.println("Lowest string: " + stringList.lowest());
+        System.out.println("Highest string: " + stringList.highest());
     }
 }
