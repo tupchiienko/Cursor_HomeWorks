@@ -1,8 +1,8 @@
 package homework4;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class MyList<T extends Comparable<T>> {
     private final ArrayList<T> list;
@@ -15,19 +15,20 @@ public class MyList<T extends Comparable<T>> {
         this.list = new ArrayList<>(List.of(array));
     }
 
-    public ArrayList<T> getList() {
-        return list;
-    }
-
     public void add(T element) {
         list.add(element);
     }
 
     public T highest() {
-        return list.stream().sorted().collect(Collectors.toList()).get(list.size() - 1);
+        return list.stream().max(Comparator.naturalOrder()).orElseThrow(() -> new EmptyListException("List is empty"));
     }
 
     public T lowest() {
-        return list.stream().sorted().collect(Collectors.toList()).get(0);
+        return list.stream().min(Comparator.naturalOrder()).orElseThrow(() -> new EmptyListException("List is empty"));
+    }
+
+    @Override
+    public String toString() {
+        return "MyList{" + list + '}';
     }
 }
