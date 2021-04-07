@@ -29,8 +29,9 @@ public class Stack<T> {
     }
 
     public T top() {
-        if (isEmpty())
+        if (isEmpty()) {
             throw new EmptyStackException();
+        }
         return top.value;
     }
 
@@ -57,10 +58,11 @@ public class Stack<T> {
         StringBuilder stringBuilder = new StringBuilder();
         Node nextNode = top;
         for (int i = 0; i < size; i++) {
-            if (i == size - 1)
+            if (i == size - 1) {
                 stringBuilder.append(nextNode.value);
-            else
+            } else {
                 stringBuilder.append(nextNode.value).append(", ");
+            }
             nextNode = nextNode.next;
         }
         return '[' + stringBuilder.toString() + ']';

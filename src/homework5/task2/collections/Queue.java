@@ -19,16 +19,18 @@ public class Queue<T> {
         tail = new Node();
         tail.value = element;
         tail.next = null;
-        if (isEmpty())
+        if (isEmpty()) {
             head = tail;
-        else
+        } else {
             oldTail.next = tail;
+        }
         size++;
     }
 
     public T dequeue() {
-        if (isEmpty())
+        if (isEmpty()) {
             throw new EmptyQueueException();
+        }
         T value = head.value;
         head = head.next;
         size--;
@@ -59,10 +61,11 @@ public class Queue<T> {
         StringBuilder stringBuilder = new StringBuilder();
         Node nextNode = head;
         for (int i = 0; i < size; i++) {
-            if (i == size - 1)
+            if (i == size - 1) {
                 stringBuilder.append(nextNode.value);
-            else
+            } else {
                 stringBuilder.append(nextNode.value).append(", ");
+            }
             nextNode = nextNode.next;
         }
         return '[' + stringBuilder.toString() + ']';

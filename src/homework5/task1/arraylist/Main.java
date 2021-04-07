@@ -31,10 +31,11 @@ public class Main {
         String element = "red";
         int index = colors.indexOf(element);
         System.out.print("7. ");
-        if (index >= 0)
+        if (index >= 0) {
             System.out.println("Index of '" + element + "' is " + index);
-        else
+        } else {
             System.out.println("Element '" + element + "' not found");
+        }
         // 8. Write a Java program to sort a given array list.
         colors.sort(Comparator.naturalOrder());
         System.out.println("8. " + colors);

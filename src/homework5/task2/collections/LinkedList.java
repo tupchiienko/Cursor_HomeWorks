@@ -19,11 +19,13 @@ public class LinkedList<T> {
         newNode.value = element;
         newNode.next = first;
         newNode.prev = null;
-        if (first != null)
+        if (first != null) {
             first.prev = newNode;
+        }
         first = newNode;
-        if (last == null)
+        if (last == null) {
             last = newNode;
+        }
         size++;
     }
 
@@ -32,20 +34,22 @@ public class LinkedList<T> {
         newNode.value = element;
         newNode.next = null;
         newNode.prev = last;
-        if (last != null)
+        if (last != null) {
             last.next = newNode;
+        }
         last = newNode;
-        if (first == null)
+        if (first == null) {
             first = newNode;
+        }
         size++;
     }
 
     public void add(int index, T element) {
-        if (index == 0)
+        if (index == 0) {
             addFirst(element);
-        else if (index == size)
+        } else if (index == size) {
             addLast(element);
-        else {
+        } else {
             Node node = getNode(index);
             Node newNode = new Node();
             newNode.prev = node.prev;
@@ -62,8 +66,9 @@ public class LinkedList<T> {
     }
 
     public void removeFirst() {
-        if (isEmpty())
+        if (isEmpty()) {
             throw new EmptyListException();
+        }
         if (size == 1) {
             clear();
         } else {
@@ -74,8 +79,9 @@ public class LinkedList<T> {
     }
 
     public void removeLast() {
-        if (isEmpty())
+        if (isEmpty()) {
             throw new EmptyListException();
+        }
         if (size == 1) {
             clear();
         } else {
@@ -92,8 +98,9 @@ public class LinkedList<T> {
     }
 
     private Node getNode(int index) {
-        if (index >= size || index < 0)
+        if (index >= size || index < 0) {
             throw new IndexOutOfBoundsException();
+        }
         Node nextNode = first;
         for (int i = 0; i < index; i++) {
             nextNode = nextNode.next;
@@ -120,10 +127,11 @@ public class LinkedList<T> {
         StringBuilder stringBuilder = new StringBuilder();
         Node nextNode = first;
         for (int i = 0; i < size; i++) {
-            if (i == size - 1)
+            if (i == size - 1) {
                 stringBuilder.append(nextNode.value);
-            else
+            } else {
                 stringBuilder.append(nextNode.value).append(", ");
+            }
             nextNode = nextNode.next;
         }
         return '[' + stringBuilder.toString() + ']';
