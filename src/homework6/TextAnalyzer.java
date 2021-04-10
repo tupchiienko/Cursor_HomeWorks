@@ -143,12 +143,7 @@ public class TextAnalyzer {
     }
 
     private boolean isPunctuation(char c) {
-        return c == ','
-                || c == '.'
-                || c == '!'
-                || c == '?'
-                || c == ':'
-                || c == ';';
+        return List.of(',', '.', '!','?', ':', ';').contains(c);
     }
 
     @Override
