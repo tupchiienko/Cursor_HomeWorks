@@ -1,6 +1,6 @@
-package homework7;
+package homework7.task1;
 
-import static homework7.Continent.*;
+import static homework7.task1.Continent.*;
 
 public enum Country {
     UKRAINE("Ukraine", EUROPE),

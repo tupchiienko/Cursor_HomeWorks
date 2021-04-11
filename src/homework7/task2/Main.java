@@ -1,11 +1,18 @@
-package homework7;
+package homework7.task2;
 
-import java.util.*;
+import homework7.task1.Continent;
+import homework7.task1.Country;
+import homework7.task1.Gender;
+import homework7.task1.Person;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
-import static homework7.Country.*;
-import static homework7.Gender.FEMALE;
-import static homework7.Gender.MALE;
+import static homework7.task1.Country.*;
+import static homework7.task1.Gender.FEMALE;
+import static homework7.task1.Gender.MALE;
 
 public class Main {
     public static void main(String[] args) {
@@ -25,21 +32,12 @@ public class Main {
                 new Person("Thomas", 12, MALE, AUSTRALIA),
                 new Person("Brittney", 43, FEMALE, AUSTRALIA)
         ));
-        Set<String> filteredStreamSet = personList.stream()
-                .filter(person -> person.getAge() >= 18 && person.getAge() < 60)
-                .collect(
-                        HashSet::new,
-                        (set, person) -> set.add(person.getName() + " - " + (person.getGender() == Gender.MALE ? "m" : "f")),
-                        HashSet::addAll
-                );
-        System.out.println("1. " + filteredStreamSet);
         Map<Continent, Map<Country, Map<Gender, List<Person>>>> groupedPersonMap = personList.stream()
                 .filter(person -> person.getAge() >= 18 && person.getAge() < 60)
                 .collect(Collectors.groupingBy(person -> person.getCountry().getContinent(),
                         Collectors.groupingBy(Person::getCountry,
                                 Collectors.groupingBy(Person::getGender)))
                 );
-        System.out.println("2. ");
         groupedPersonMap.forEach((continent, countryListMap) -> {
             System.out.println(continent + ":");
             countryListMap.forEach((country, genderListMap) -> {
@@ -50,6 +48,5 @@ public class Main {
                 });
             });
         });
-
     }
 }
