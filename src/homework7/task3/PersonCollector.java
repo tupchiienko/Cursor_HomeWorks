@@ -26,29 +26,33 @@ public class PersonCollector implements Collector<String, List<String>, List<Per
 
     @Override
     public BiConsumer<List<String>, String> accumulator() {
-        return (List::add);
+        return List::add;
     }
 
     @Override
     public BinaryOperator<List<String>> combiner() {
-        return ((strings, strings2) -> {
-            strings.addAll(strings2);
-            return strings;
-        });
+        return this::listCombiner;
+    }
+
+    private List<String> listCombiner(List<String> list1, List<String> list2) {
+        list1.addAll(list2);
+        return list1;
     }
 
     @Override
     public Function<List<String>, List<Person>> finisher() {
-        return strings -> {
-            if (strings.size() % 2 != 0) {
-                throw new IllegalArgumentException("Strings count must be even.");
-            }
-            List<Person> personList = new ArrayList<>();
-            for (int i = 0; i < strings.size(); i += 2) {
-                personList.add(new Person(strings.get(i), strings.get(i + 1)));
-            }
-            return personList;
-        };
+        return this::makePeopleList;
+    }
+
+    private List<Person> makePeopleList(List<String> strings) {
+        if (strings.size() % 2 != 0) {
+            throw new IllegalArgumentException("Strings count must be even.");
+        }
+        List<Person> personList = new ArrayList<>();
+        for (int i = 0; i < strings.size(); i += 2) {
+            personList.add(new Person(strings.get(i), strings.get(i + 1)));
+        }
+        return personList;
     }
 
     @Override
