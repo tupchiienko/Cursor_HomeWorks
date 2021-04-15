@@ -5,17 +5,20 @@ import java.util.Scanner;
 public class SafeDivision {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        int result;
+        double result;
         System.out.print("Enter A: ");
         int a = scanner.nextInt();
         System.out.print("Enter B: ");
         int b = scanner.nextInt();
         while (true) {
             try {
-                result = a / b;
+                if (b == 0) {
+                    throw new ArithmeticException("Division by zero.");
+                }
+                result = (double) a / b;
                 break;
-            } catch (ArithmeticException ignored) {
-                System.out.print("Division by zero. Reenter B: ");
+            } catch (ArithmeticException exception) {
+                System.out.print(exception.getMessage() + " Reenter B: ");
                 b = scanner.nextInt();
             }
         }
