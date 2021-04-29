@@ -9,8 +9,12 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("Task 1");
         int mark = 10;
-        String textMark = markToTextMark(mark);
-        System.out.println("Mark " + mark + " is " + textMark);
+        try {
+            String textMark = markToTextMark(mark);
+            System.out.println("Mark " + mark + " is " + textMark);
+        } catch (IllegalStateException exception) {
+            System.out.println(exception.getMessage());
+        }
         System.out.println("-".repeat(30));
         System.out.println("Task 2");
         List<Integer> integerList = new ArrayList<>(List.of(1, 2, 2, 3));
