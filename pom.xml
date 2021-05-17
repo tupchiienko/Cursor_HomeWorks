@@ -20,6 +20,12 @@
             <artifactId>maven-checkstyle-plugin</artifactId>
             <version>${checkstyle-maven-plugin.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.2.5</version>
+        </dependency>
     </dependencies>
 
     <reporting>
